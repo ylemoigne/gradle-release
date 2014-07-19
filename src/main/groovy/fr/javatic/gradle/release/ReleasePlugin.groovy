@@ -11,7 +11,7 @@ class ReleasePlugin implements Plugin<Project> {
     private final static String PROPERTY_VERSION_MINOR = "minorVersion"
 
     void apply(Project project) {
-        project.extensions.create("release", ReleaseExtension)
+        project.extensions.create("release", ReleaseExtension, project)
 
         applyVersion(project)
 

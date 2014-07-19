@@ -24,6 +24,14 @@ It's simple.
 Usage
 =====
 
+First create a file named `version.properties` at project root :
+
+    majorVersion=0
+    minorVersion=0
+
+
+Then in `build.gradle` :
+
     buildscript {
         repositories {
             mavenCentral()
@@ -44,6 +52,7 @@ Usage
         tagPrefix = "release_"
 
         pushTo = "origin"
+        pushKey = project.file("id_rsa")
     }
 
 About the release extension :
@@ -55,3 +64,4 @@ About the release extension :
 * `tagPrefix` When using `release` task, the tag name is made of $tagPrefix$majorVersion.$minorVersion. Default is `release_` which for a majorVersion=2, minorVersion=3 will produce a tag named `release_2.3`
 
 * `pushTo` Name of the remote on to push branch & tag. Default is `origin`. Can be set to `null` to disable push.
+* `pushKey` File containing ssh key to push

@@ -61,7 +61,7 @@ class GitManager {
         protected JSch getJSch(OpenSshConfig.Host hc, FS fs) throws JSchException {
             JSch jsch = super.getJSch(hc, fs)
             jsch.removeAllIdentity()
-            jsch.addIdentity(new File(project.rootProject.rootDir, 'id_rsa').toString())
+            jsch.addIdentity(project.release.pushKey.toString())
             return jsch
         }
     }
